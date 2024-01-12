@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_ver_libro"
+        android:title="Ver Libro" />
+    <item
+        android:id="@+id/menu_editar_libro"
+        android:title=" Editar Libro" />
+    <item
+        android:id="@+id/menu_eliminar_libro"
+        android:title="Eliminar Libro" />
+</menu>

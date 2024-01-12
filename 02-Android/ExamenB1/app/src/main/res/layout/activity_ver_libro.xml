@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerLibro">
+
+    <ListView
+        android:id="@+id/id_list_view_recetas"
+        android:layout_width="284dp"
+        android:layout_height="255dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.435" />
+
+    <Button
+        android:id="@+id/id_btn_agregar_receta"
+        android:layout_width="153dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="56dp"
+        android:text="Agregar Receta"
+        app:layout_constraintBottom_toTopOf="@+id/id_list_view_recetas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/id_btn_libros_atras"
+        android:layout_width="101dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="56dp"
+        android:text="Libros"
+        app:layout_constraintBottom_toTopOf="@+id/id_list_view_recetas"
+        app:layout_constraintEnd_toStartOf="@+id/id_btn_agregar_receta"
+        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
