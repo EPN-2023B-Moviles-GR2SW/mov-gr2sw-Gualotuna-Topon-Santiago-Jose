@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="saludo">Hola land</string>
+    <color name="color_text">#FFFFFF</color>
+    <color name="background">#86E224</color>
+</resources>
