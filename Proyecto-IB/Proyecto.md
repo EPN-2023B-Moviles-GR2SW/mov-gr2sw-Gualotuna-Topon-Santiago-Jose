@@ -15,7 +15,7 @@ Bienvenido a la presentación del proyecto, el cual tiene como objetivo presenta
 
 
 ## Enlace
-- [Enlace al Repositorio del Proyecto](https://epnecuador-my.sharepoint.com/:w:/g/personal/daniel_vargas02_epn_edu_ec/EWSCnNojONpNnQuVEVn8UjEB2KXvYhi6_73aPJEPnPo5RA?e=xIyDxk)
+- [Enlace al Repositorio del Proyecto](Proyecto-%20Apps%20Moviles.pdf)
 
 
 ## Conclusiones
