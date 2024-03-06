@@ -4,6 +4,7 @@ import Receta
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -11,6 +12,7 @@ import android.widget.Toast
 
 class FormReceta : AppCompatActivity() {
     var managerLibro = BaseDatosMemoria;
+    var firestore = Firestore()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form_receta)
@@ -35,24 +37,36 @@ class FormReceta : AppCompatActivity() {
         val nacionalidadInput = findViewById<EditText>(R.id.id_text_nacionalidad)
         val tiempoInput = findViewById<EditText>(R.id.id_text_tiempo)
         val ingredientesInput = findViewById<EditText>(R.id.id_text_ingredientes)
-        val pasosInput = findViewById<EditText>(R.id.id_text_pasos)
+        val idLibro = intent.getStringExtra("idLibro");
+        val idReceta = intent.getStringExtra("idReceta");
+        Log.d("idLibro receta", "${idLibro}")
+        Log.d("idReceta receta", "${idReceta}")
         var receta = Receta(
+            idReceta,
             nombre = nombreInput.text.toString(),
             nacionalidad = nacionalidadInput.text.toString(),
             tiempoPreparacion = tiempoInput.text.toString().toInt(),
-            ingredientes = ingredientesInput.text.toString().split(",").map { it.trim() }.toMutableList(),
-            pasos = pasosInput.text.toString().split(",").map { it.trim() }.toMutableList()
+            ingredientes = ingredientesInput.text.toString(),
+            idLibro
         )
-        val idLibro = intent.getIntExtra("idLibro",-1);
-        val idReceta = intent.getIntExtra("idReceta",-1);
-        if(idLibro != -1 && idReceta !=-1){
+        Log.d("antes receta", "${receta.toString()}")
 
-            managerLibro.actualizarReceta(idLibro,idReceta, receta);
-            setResult(RESULT_OK);
+//        if(idLibro!!.isNotEmpty() && idReceta!!.isNotEmpty()){
+//            Log.d("actualizar Receta", "${3}")
+//            managerLibro.actualizarReceta(idLibro,idReceta, receta);
+//            setResult(RESULT_OK);
+//        }else{
+        if (idReceta  === null){
+            Log.d("agregar Receta:", "${receta.toString()}")
+            firestore.agregarReceta(receta)
         }else{
-            managerLibro.agregarReceta(idLibro,receta)
-            setResult(RESULT_OK);
+            firestore.actualizarReceta(idReceta,receta)
         }
+
+
+
+            setResult(RESULT_OK);
+//        }
     }
 
     fun llenarDatos(){
@@ -63,18 +77,25 @@ class FormReceta : AppCompatActivity() {
         val tiempoInput = findViewById<EditText>(R.id.id_text_tiempo)
         val ingredientesInput = findViewById<EditText>(R.id.id_text_ingredientes)
         val pasosInput = findViewById<EditText>(R.id.id_text_pasos)
-        val idLibro = intent.getIntExtra("idLibro",-1);
-        val idReceta = intent.getIntExtra("idReceta",-1);
+        val idLibro = intent.getStringExtra("idLibro");
+        val idReceta = intent.getStringExtra("idReceta");
 
-        if(idLibro != -1 && idReceta !=-1){
-            formTitulo.text = "Actualizar Receta"
-            val libroDB = managerLibro.buscarLibroPorId(idLibro);
-            val receta = libroDB!!.recetas.get(idReceta);
-            nombreInput.setText(receta.nombre.toString())
-            nacionalidadInput.setText(receta.nacionalidad.toString())
-            tiempoInput.setText(receta.tiempoPreparacion.toString())
-            ingredientesInput.setText(receta.ingredientes.joinToString(separator = ",").toString())
-            pasosInput.setText(receta.pasos.joinToString(separator = ",").toString())
+        if(idReceta.isNullOrEmpty()){
+            return
+        }
+        if(!idReceta!!.isNullOrEmpty()){
+            val firestore = Firestore()
+            firestore.buscarRecetaPorId(idReceta){
+                formTitulo.text = "Actualizar Receta"
+                nombreInput.setText(it!!.nombre.toString())
+                nacionalidadInput.setText(it!!.nacionalidad.toString())
+                tiempoInput.setText(it!!.tiempoPreparacion.toString())
+                ingredientesInput.setText(it!!.ingredientes.toString())
+            }
+
+
+//            ingredientesInput.setText(receta.ingredientes.joinToString(separator = ",").toString())
+//            pasosInput.setText(receta.pasos.joinToString(separator = ",").toString())
         }
 
     }

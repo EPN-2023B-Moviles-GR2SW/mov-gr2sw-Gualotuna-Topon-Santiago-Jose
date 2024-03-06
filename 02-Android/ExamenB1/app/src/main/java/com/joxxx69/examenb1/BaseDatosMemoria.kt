@@ -11,7 +11,6 @@ class BaseDatosMemoria {
 
         fun agregarLibro(libro:Libro){
             libros.add(libro);
-
         }
 
         fun actualizarlibro(id:Int, libroNuevo:Libro){
@@ -107,23 +106,14 @@ class BaseDatosMemoria {
 
         //----- datos en memoria -----
 
-        init {
-            libros.add(
-                Libro(
-                    "MasterChef",
-                    "Santiago",
-                    2023,
-                    "Salamandra",
-                    recetas = mutableListOf(
-                        Receta(
-                            "encebollado mixto",
-                            "ecuatoriana",
-                            40,
-                            mutableListOf(
-                                "queso","pez", "aji"
-                            ),
-                            mutableListOf("cocinar","mezclar","hornear")
-                        ),
+//        init {
+//            libros.add(
+//                Libro(
+//                    "MasterChef",
+//                    "Santiago",
+//                    2023,
+//                    "Salamandra",
+//                    recetas = mutableListOf(
 //                        Receta(
 //                            "encebollado mixto",
 //                            "ecuatoriana",
@@ -133,46 +123,55 @@ class BaseDatosMemoria {
 //                            ),
 //                            mutableListOf("cocinar","mezclar","hornear")
 //                        ),
-//                        Receta(
-//                            "Camaron apanado",
-//                            "ecuatoriana",
-//                            40,
-//                            mutableListOf(
-//                                "queso","pez", "aji"
-//                            ),
-//                            mutableListOf("cocinar","mezclar","hornear")
-//                        ),
-//                        Receta(
-//                            "Ceviche mixto",
-//                            "ecuatoriana",
-//                            40,
-//                            mutableListOf(
-//                                "queso","pez", "aji"
-//                            ),
-//                            mutableListOf("cocinar","mezclar","hornear")
-//                        )
-                    )
-                )
-            )
-            libros.add(
-                Libro(
-                    "Pizzas",
-                    "Jose",
-                    2015,
-                    "Santillana",
-                    recetas = mutableListOf()
-                )
-            )
-            libros.add(
-                Libro(
-                    "Mexicana",
-                    "Simon",
-                    2019,
-                    "Cocito",
-                    recetas = mutableListOf()
-                )
-
-            )
-        }
+////                        Receta(
+////                            "encebollado mixto",
+////                            "ecuatoriana",
+////                            40,
+////                            mutableListOf(
+////                                "queso","pez", "aji"
+////                            ),
+////                            mutableListOf("cocinar","mezclar","hornear")
+////                        ),
+////                        Receta(
+////                            "Camaron apanado",
+////                            "ecuatoriana",
+////                            40,
+////                            mutableListOf(
+////                                "queso","pez", "aji"
+////                            ),
+////                            mutableListOf("cocinar","mezclar","hornear")
+////                        ),
+////                        Receta(
+////                            "Ceviche mixto",
+////                            "ecuatoriana",
+////                            40,
+////                            mutableListOf(
+////                                "queso","pez", "aji"
+////                            ),
+////                            mutableListOf("cocinar","mezclar","hornear")
+////                        )
+//                    )
+//                )
+//            )
+//            libros.add(
+//                Libro(
+//                    "Pizzas",
+//                    "Jose",
+//                    2015,
+//                    "Santillana",
+//                    recetas = mutableListOf()
+//                )
+//            )
+//            libros.add(
+//                Libro(
+//                    "Mexicana",
+//                    "Simon",
+//                    2019,
+//                    "Cocito",
+//                    recetas = mutableListOf()
+//                )
+//
+//            )
+//        }
     }
 }

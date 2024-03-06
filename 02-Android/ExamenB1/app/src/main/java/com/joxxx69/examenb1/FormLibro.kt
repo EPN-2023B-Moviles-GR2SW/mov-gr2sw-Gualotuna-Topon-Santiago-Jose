@@ -4,6 +4,7 @@ import Libro
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -41,17 +42,21 @@ class FormLibro : AppCompatActivity() {
         val autorInput =findViewById<EditText>(R.id.id_text_nacionalidad);
         val anioPublicacionInput =findViewById<EditText>(R.id.id_text_tiempo);
         val editorialInput =findViewById<EditText>(R.id.id_text_ingredientes);
-        val idLibro = intent.getIntExtra("idLibro",-1);
         var libro = Libro(
+            idLibro = intent.getStringExtra("idLibro"),
             titulo= tituloInput.text.toString(),
             autor= autorInput.text.toString(),
             anioPublicacion = anioPublicacionInput.text.toString().toInt(),
             editorial = editorialInput.text.toString()
         )
-        if(idLibro == -1){
-            managerLibro.agregarLibro(libro);
+        val firestore = Firestore()
+        val idLibro = intent.getStringExtra("idLibro");
+        Log.d("guardar libro","${idLibro}")
+        if(idLibro === null){
+            firestore.agregarLibro(libro);
         }else{
-            managerLibro.actualizarlibro(idLibro,libro);
+            firestore.actualizarLibro(idLibro,libro)
+//            managerLibro.actualizarlibro(idLibro,libro);
         }
 
 
@@ -63,16 +68,25 @@ class FormLibro : AppCompatActivity() {
         val autorInput =findViewById<EditText>(R.id.id_text_nacionalidad);
         val anioPublicacionInput =findViewById<EditText>(R.id.id_text_tiempo);
         val editorialInput =findViewById<EditText>(R.id.id_text_ingredientes);
-        val idLibro = intent.getIntExtra("idLibro",-1);
-        if(idLibro != -1){
-            val libroDB = managerLibro.buscarLibroPorId(idLibro);
-            if(libroDB!==null){
+        val idLibro = intent.getStringExtra("idLibro");
+
+        Log.d("llenarDatos: ", "${idLibro}")
+        if(idLibro.isNullOrEmpty()){
+            return
+        }
+
+        if(!idLibro!!.isNullOrEmpty()){
+            Log.d("Entro: ", "${idLibro}")
+            val firestore = Firestore()
+            firestore.buscarLibroPorId(idLibro){
+                Log.d("libro Encontrado","${it!!.idLibro.toString()}")
                 formTitulo.text = "Actualizar Libro"
-                tituloInput.setText(libroDB.titulo.toString());
-                autorInput.setText(libroDB.autor.toString());
-                anioPublicacionInput.setText(libroDB.anioPublicacion.toString())
-                editorialInput.setText(libroDB.editorial.toString())
+                tituloInput.setText(it!!.titulo.toString());
+                autorInput.setText(it!!.autor.toString());
+                anioPublicacionInput.setText(it!!.anioPublicacion.toString())
+                editorialInput.setText(it!!.editorial.toString())
             }
+
         }
 
     }

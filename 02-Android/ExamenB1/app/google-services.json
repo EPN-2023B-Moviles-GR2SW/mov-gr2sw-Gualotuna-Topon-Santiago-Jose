@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1077566944499",
+    "firebase_url": "https://fir-db-7dd90-default-rtdb.firebaseio.com",
+    "project_id": "fir-db-7dd90",
+    "storage_bucket": "fir-db-7dd90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077566944499:android:380cca2c80b8a0bf5ef386",
+        "android_client_info": {
+          "package_name": "com.joxxx69.examenb1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077566944499-jqn42fda5rto0cipndnjai67rf2ro932.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOcSd6xFJQ4rGfmGOBE2VJpOzH3TbU_xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077566944499-jqn42fda5rto0cipndnjai67rf2ro932.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

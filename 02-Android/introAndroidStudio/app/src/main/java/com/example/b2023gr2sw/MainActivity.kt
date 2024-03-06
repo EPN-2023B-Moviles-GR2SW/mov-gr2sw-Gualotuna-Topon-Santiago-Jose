@@ -49,9 +49,24 @@ class MainActivity : ComponentActivity() {
         val botonRView = findViewById<Button>(R.id.btn_revcycler_view)
         botonRView
             .setOnClickListener {
-                irActividad(FRecycleView::class.java)
+                irActividad(FRecyclerView::class.java)
+            }
+        val botonGoogleMaps = findViewById<Button>(R.id.btn_google_maps)
+        botonGoogleMaps
+            .setOnClickListener {
+                irActividad(GGoogleMapsActivity::class.java)
             }
 
+        val botonFirebaseUI = findViewById<Button>(R.id.btn_intent_firebase_ui)
+        botonFirebaseUI
+            .setOnClickListener {
+                irActividad(HFirebaseUIAuth::class.java)
+            }
+        val botonFirestore = findViewById<Button>(R.id.btn_intent_firestore)
+        botonFirestore
+            .setOnClickListener {
+                irActividad(IFirestore::class.java)
+            }
     }
 
 
